@@ -3,18 +3,40 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Auto Total Form</title>
+<title>Auto Total Report</title>
 <style>
   body {
     font-family: Arial, sans-serif;
     margin: 16px;
-    background: #f8f9fa;
+    background: #f0f2f5;
+  }
+  #form-container {
+    background: white;
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ccc;
+    max-width: 800px;
+    margin: auto;
+  }
+  h1, h2 {
+    margin-top: 0;
+  }
+  h1 {
+    font-size: 24px;
+    color: #007bff;
+    margin-bottom: 6px;
   }
   h2 {
-    background: #e0e0e0;
+    background: #e9ecef;
     padding: 8px;
-    margin-top: 24px;
-    border-radius: 4px;
+    border-radius: 6px;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  #reportDate {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 20px;
   }
   .form-row {
     display: flex;
@@ -33,9 +55,10 @@
   .total-row {
     display: flex;
     margin: 12px 0;
-    background: #ddd;
+    background: #d1ecf1;
     padding: 8px;
     font-weight: bold;
+    border-left: 5px solid #17a2b8;
     border-radius: 4px;
   }
   .total-row div:first-child {
@@ -45,9 +68,18 @@
     flex: 2;
     text-align: right;
   }
+  .section {
+    border: 1px solid #dee2e6;
+    padding: 16px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    background: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
   button {
-    margin-top: 32px;
-    padding: 10px 24px;
+    display: block;
+    margin: 30px auto 0;
+    padding: 12px 28px;
     font-size: 16px;
     border: none;
     background: #007bff;
@@ -58,83 +90,81 @@
   button:hover {
     background: #0056b3;
   }
-  #form-container {
-    background: white;
-    padding: 16px;
-    border-radius: 8px;
-    box-shadow: 0 0 8px #ccc;
-    max-width: 600px;
-    margin: auto;
+  .summary p {
+    margin: 4px 0;
   }
 </style>
 </head>
 <body>
 
 <div id="form-container">
-
-  <h2>Number of Windows Work</h2>
-  <div class="form-row">
-    <label for="shift1">Shift 1</label>
-    <input type="number" id="shift1" value="0" min="0" />
-  </div>
-  <div class="form-row">
-    <label for="shift2">Shift 2</label>
-    <input type="number" id="shift2" value="0" min="0" />
-  </div>
-  <div class="total-row">
-    <div>Total</div>
-    <div id="totalWindowsWork">0</div>
+  <div style="text-align:center;">
+    <h1>Daily Transaction Report</h1>
+    <p id="reportDate"></p>
   </div>
 
-  <h2>Refund Form</h2>
-  <div class="form-row"><label for="refundForms">Forms</label><input type="number" id="refundForms" value="0" min="0" /></div>
-  <div class="form-row"><label for="refundTickets">Tickets</label><input type="number" id="refundTickets" value="0" min="0" /></div>
-  <div class="form-row"><label for="refundPassengers">Passengers</label><input type="number" id="refundPassengers" value="0" min="0" /></div>
-  <div class="form-row"><label for="posRefund">POS Refund</label><input type="number" id="posRefund" value="0" min="0" /></div>
-  <div class="form-row"><label for="qrUpiRefund">QR+UPI Refund</label><input type="number" id="qrUpiRefund" value="0" min="0" /></div>
-  <div class="form-row"><label for="cashRefund">Cash Refund</label><input type="number" id="cashRefund" value="0" min="0" /></div>
-  <div class="total-row">
-    <div>Total Refund</div>
-    <div id="totalRefund">0</div>
+  <div class="section">
+    <h2>Number of Windows Work</h2>
+    <div class="form-row"><label for="shift1">Shift 1</label><input type="number" id="shift1" value="0" min="0" /></div>
+    <div class="form-row"><label for="shift2">Shift 2</label><input type="number" id="shift2" value="0" min="0" /></div>
+    <div class="total-row"><div>Total</div><div id="totalWindowsWork">0</div></div>
   </div>
 
-  <h2>Booking Form</h2>
-  <div class="form-row"><label for="bookingForms">Forms</label><input type="number" id="bookingForms" value="0" min="0" /></div>
-  <div class="form-row"><label for="bookingTickets">Tickets</label><input type="number" id="bookingTickets" value="0" min="0" /></div>
-  <div class="form-row"><label for="bookingPassengers">Passengers</label><input type="number" id="bookingPassengers" value="0" min="0" /></div>
-  <div class="form-row"><label for="posEarning">POS Earning</label><input type="number" id="posEarning" value="0" min="0" /></div>
-  <div class="form-row"><label for="qrUpiEarning">QR+UPI Earning</label><input type="number" id="qrUpiEarning" value="0" min="0" /></div>
-  <div class="form-row"><label for="cashEarning">Cash Earning</label><input type="number" id="cashEarning" value="0" min="0" /></div>
-  <div class="total-row">
-    <div>Total Earning</div>
-    <div id="totalBookingEarning">0</div>
+  <div class="section">
+    <h2>Refund Form</h2>
+    <div class="form-row"><label for="refundForms">Forms</label><input type="number" id="refundForms" value="0" min="0" /></div>
+    <div class="form-row"><label for="refundTickets">Tickets</label><input type="number" id="refundTickets" value="0" min="0" /></div>
+    <div class="form-row"><label for="refundPassengers">Passengers</label><input type="number" id="refundPassengers" value="0" min="0" /></div>
+    <div class="form-row"><label for="posRefund">POS Refund</label><input type="number" id="posRefund" value="0" min="0" /></div>
+    <div class="form-row"><label for="qrUpiRefund">QR+UPI Refund</label><input type="number" id="qrUpiRefund" value="0" min="0" /></div>
+    <div class="form-row"><label for="cashRefund">Cash Refund</label><input type="number" id="cashRefund" value="0" min="0" /></div>
+    <div class="total-row"><div>Total Refund</div><div id="totalRefund">0</div></div>
   </div>
 
-  <h2>QR+UPI EARNING Form</h2>
-  <div class="form-row"><label for="qrForms">Forms</label><input type="number" id="qrForms" value="0" min="0" /></div>
-  <div class="form-row"><label for="qrTickets">Tickets</label><input type="number" id="qrTickets" value="0" min="0" /></div>
-  <div class="form-row"><label for="qrPassengers">Passengers</label><input type="number" id="qrPassengers" value="0" min="0" /></div>
-  <div class="form-row"><label for="qrTotalAmount">Total Amount</label><input type="number" id="qrTotalAmount" value="0" min="0" /></div>
-  <div class="total-row">
-    <div>Total Amount</div>
-    <div id="totalQREarning">0</div>
+  <div class="section">
+    <h2>Booking Form</h2>
+    <div class="form-row"><label for="bookingForms">Forms</label><input type="number" id="bookingForms" value="0" min="0" /></div>
+    <div class="form-row"><label for="bookingTickets">Tickets</label><input type="number" id="bookingTickets" value="0" min="0" /></div>
+    <div class="form-row"><label for="bookingPassengers">Passengers</label><input type="number" id="bookingPassengers" value="0" min="0" /></div>
+    <div class="form-row"><label for="posEarning">POS Earning</label><input type="number" id="posEarning" value="0" min="0" /></div>
+    <div class="form-row"><label for="qrUpiEarning">QR+UPI Earning</label><input type="number" id="qrUpiEarning" value="0" min="0" /></div>
+    <div class="form-row"><label for="cashEarning">Cash Earning</label><input type="number" id="cashEarning" value="0" min="0" /></div>
+    <div class="total-row"><div>Total Earning</div><div id="totalBookingEarning">0</div></div>
   </div>
 
-  <h2>POS EARNING Form</h2>
-  <div class="form-row"><label for="posForms">Forms</label><input type="number" id="posForms" value="0" min="0" /></div>
-  <div class="form-row"><label for="posTickets">Tickets</label><input type="number" id="posTickets" value="0" min="0" /></div>
-  <div class="form-row"><label for="posPassengers">Passengers</label><input type="number" id="posPassengers" value="0" min="0" /></div>
-  <div class="form-row"><label for="posTotalAmount">Total Amount</label><input type="number" id="posTotalAmount" value="0" min="0" /></div>
-  <div class="total-row">
-    <div>Total Amount</div>
-    <div id="totalPOSEarning">0</div>
+  <div class="section">
+    <h2>QR+UPI Earning</h2>
+    <div class="form-row"><label for="qrForms">Forms</label><input type="number" id="qrForms" value="0" min="0" /></div>
+    <div class="form-row"><label for="qrTickets">Tickets</label><input type="number" id="qrTickets" value="0" min="0" /></div>
+    <div class="form-row"><label for="qrPassengers">Passengers</label><input type="number" id="qrPassengers" value="0" min="0" /></div>
+    <div class="form-row"><label for="qrTotalAmount">Total Amount</label><input type="number" id="qrTotalAmount" value="0" min="0" /></div>
+    <div class="total-row"><div>Total Amount</div><div id="totalQREarning">0</div></div>
   </div>
 
-  <button id="downloadBtn">Download Form as Image</button>
+  <div class="section">
+    <h2>POS Earning</h2>
+    <div class="form-row"><label for="posForms">Forms</label><input type="number" id="posForms" value="0" min="0" /></div>
+    <div class="form-row"><label for="posTickets">Tickets</label><input type="number" id="posTickets" value="0" min="0" /></div>
+    <div class="form-row"><label for="posPassengers">Passengers</label><input type="number" id="posPassengers" value="0" min="0" /></div>
+    <div class="form-row"><label for="posTotalAmount">Total Amount</label><input type="number" id="posTotalAmount" value="0" min="0" /></div>
+    <div class="total-row"><div>Total Amount</div><div id="totalPOSEarning">0</div></div>
+  </div>
+
+  <div class="section summary">
+    <h2>Summary</h2>
+    <p><strong>Total Windows Work:</strong> <span id="summaryTotalWindows">0</span></p>
+    <p><strong>Total Refund:</strong> <span id="summaryTotalRefund">0</span></p>
+    <p><strong>Total Booking Earnings:</strong> <span id="summaryTotalBooking">0</span></p>
+  </div>
+
+  <button id="downloadBtn">Download Report as Image</button>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script>
+  document.getElementById("reportDate").textContent =
+    `Date: ${new Date().toLocaleDateString()}`;
+
   const inputs = [
     "shift1", "shift2",
     "refundForms", "refundTickets", "refundPassengers", "posRefund", "qrUpiRefund", "cashRefund",
@@ -149,21 +179,23 @@
   }
 
   function recalcTotals() {
-    document.getElementById("totalWindowsWork").textContent =
-      getIntValue("shift1") + getIntValue("shift2");
+    const totalWindows = getIntValue("shift1") + getIntValue("shift2");
+    const totalRefund = getIntValue("refundForms") + getIntValue("refundTickets") +
+                        getIntValue("refundPassengers") + getIntValue("posRefund") +
+                        getIntValue("qrUpiRefund") + getIntValue("cashRefund");
+    const totalBooking = getIntValue("posEarning") + getIntValue("qrUpiEarning") + getIntValue("cashEarning");
+    const totalQR = getIntValue("qrForms") + getIntValue("qrTickets") + getIntValue("qrPassengers") + getIntValue("qrTotalAmount");
+    const totalPOS = getIntValue("posForms") + getIntValue("posTickets") + getIntValue("posPassengers") + getIntValue("posTotalAmount");
 
-    document.getElementById("totalRefund").textContent =
-      getIntValue("refundForms") + getIntValue("refundTickets") + getIntValue("refundPassengers") +
-      getIntValue("posRefund") + getIntValue("qrUpiRefund") + getIntValue("cashRefund");
+    document.getElementById("totalWindowsWork").textContent = totalWindows;
+    document.getElementById("totalRefund").textContent = totalRefund;
+    document.getElementById("totalBookingEarning").textContent = totalBooking;
+    document.getElementById("totalQREarning").textContent = totalQR;
+    document.getElementById("totalPOSEarning").textContent = totalPOS;
 
-    document.getElementById("totalBookingEarning").textContent =
-      getIntValue("posEarning") + getIntValue("qrUpiEarning") + getIntValue("cashEarning");
-
-    document.getElementById("totalQREarning").textContent =
-      getIntValue("qrForms") + getIntValue("qrTickets") + getIntValue("qrPassengers") + getIntValue("qrTotalAmount");
-
-    document.getElementById("totalPOSEarning").textContent =
-      getIntValue("posForms") + getIntValue("posTickets") + getIntValue("posPassengers") + getIntValue("posTotalAmount");
+    document.getElementById("summaryTotalWindows").textContent = totalWindows;
+    document.getElementById("summaryTotalRefund").textContent = totalRefund;
+    document.getElementById("summaryTotalBooking").textContent = totalBooking;
   }
 
   inputs.forEach(id => {
@@ -176,7 +208,7 @@
     html2canvas(document.getElementById("form-container")).then(canvas => {
       canvas.toBlob(blob => {
         const link = document.createElement("a");
-        link.download = "auto_total_form.png";
+        link.download = `Report_${new Date().toLocaleDateString().replace(/\//g, "-")}.png`;
         link.href = URL.createObjectURL(blob);
         link.click();
         URL.revokeObjectURL(link.href);
