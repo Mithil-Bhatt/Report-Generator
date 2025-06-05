@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Digital Transaction PRS-ADI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 16px;
+      background: #f0f2f5;
+    }
+    #form-container {
+      position: relative;
+      background: white;
+      padding: 24px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      font-size: 24px;
+      color: #007bff;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+    #reportDate {
+      font-size: 14px;
+      color: #555;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    h2 {
+      background: #e9ecef;
+      padding: 8px;
+      border-radius: 6px;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    .form-row {
+      display: flex;
+      margin: 6px 0;
+      align-items: center;
+    }
+    .form-row label {
+      flex: 3;
+    }
+    .form-row input[type="number"] {
+      flex: 2;
+      padding: 6px 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .total-row {
+      display: flex;
+      margin: 12px 0;
+      background: #d1ecf1;
+      padding: 8px;
+      font-weight: bold;
+      border-left: 5px solid #17a2b8;
+      border-radius: 4px;
+    }
+    .total-row div:first-child {
+      flex: 3;
+    }
+    .total-row div:last-child {
+      flex: 2;
+      text-align: right;
+    }
+    .section {
+      border: 1px solid #dee2e6;
+      padding: 16px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      background: #ffffff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    button {
+      display: block;
+      margin: 30px auto 0;
+      padding: 12px 28px;
+      font-size: 16px;
+      border: none;
+      background: #007bff;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div id="form-container">
+<a href="index.html"  style="position: absolute; top: 24px; right: 24px; text-decoration: none; color: #007bff; font-weight: bold;">
+    Daily Transaction Report
+  </a>
+  <h1>Digital Transaction PRS-ADI</h1>
+  <p id="reportDate"></p>
+
+  <div class="section">
+    <h2>Station Info</h2>
+    <div class="form-row"><label for="stationCode">Station Code</label><input type="text" id="stationCode" /></div>
+    <div class="form-row"><label for="stationName">Station Name</label><input type="text" id="stationName" /></div>
+  </div>
+
+  <div class="section">
+    <h2>Refund Form</h2>
+    <div class="form-row"><label for="refundForms">Forms</label><input type="number" id="refundForms" /></div>
+    <div class="form-row"><label for="refundTickets">Tickets</label><input type="number" id="refundTickets" /></div>
+    <div class="form-row"><label for="refundPassengers">Passengers</label><input type="number" id="refundPassengers" /></div>
+    <div class="form-row"><label for="posRefund">POS Refund = A</label><input type="number" id="posRefund" /></div>
+    <div class="form-row"><label for="qrRefund">QR Refund = B</label><input type="number" id="qrRefund" /></div>
+    <div class="form-row"><label for="cashRefund">Cash Refund = C</label><input type="number" id="cashRefund" /></div>
+    <div class="total-row"><div>Total Refund = A + B + C</div><div id="totalRefund">0</div></div>
+  </div>
+
+  <div class="section">
+    <h2>Booking Form</h2>
+    <div class="form-row"><label for="bookingForms">Forms</label><input type="number" id="bookingForms" /></div>
+    <div class="form-row"><label for="bookingTickets">Tickets</label><input type="number" id="bookingTickets" /></div>
+    <div class="form-row"><label for="bookingPassengers">Passengers</label><input type="number" id="bookingPassengers" /></div>
+    <div class="form-row"><label for="posEarning">POS Earning = A</label><input type="number" id="posEarning" /></div>
+    <div class="form-row"><label for="qrEarning">QR Earning = B</label><input type="number" id="qrEarning" /></div>
+    <div class="form-row"><label for="cashEarning">Cash Earning = C</label><input type="number" id="cashEarning" /></div>
+    <div class="total-row"><div>Total Earning = A + B + C</div><div id="totalEarning">0</div></div>
+  </div>
+
+  <div class="section">
+    <h2>Cashless Earning</h2>
+    <div class="form-row"><label for="cashlessForms">Forms</label><input type="number" id="cashlessForms" /></div>
+    <div class="form-row"><label for="cashlessTickets">Tickets</label><input type="number" id="cashlessTickets" /></div>
+    <div class="form-row"><label for="cashlessPassengers">Passengers</label><input type="number" id="cashlessPassengers" /></div>
+    <div class="form-row"><label for="cashlessTotal">Total Amount (POS + QR)</label><input type="number" id="cashlessTotal" /></div>
+  </div>
+
+  <div class="section">
+    <h2>Percentages & Summary</h2>
+    <div class="form-row"><label for="ticketPercent">Tickets %</label><input type="number" id="ticketPercent" /></div>
+    <div class="form-row"><label for="earningPercent">Earning %</label><input type="number" id="earningPercent" /></div>
+    <div class="form-row"><label for="grossEarning">Gross Earning</label><input type="number" id="grossEarning" /></div>
+    <div class="form-row"><label for="posTickets">POS Tickets</label><input type="number" id="posTickets" /></div>
+    <div class="form-row"><label for="qrTickets">QR Tickets</label><input type="number" id="qrTickets" /></div>
+  </div>
+
+  <button id="downloadBtn">Download Report as Image</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script>
+  const getVal = id => parseFloat(document.getElementById(id).value) || 0;
+
+  function updateAllCalculations() {
+    const posRefund = getVal("posRefund");
+    const qrRefund = getVal("qrRefund");
+    const cashRefund = getVal("cashRefund");
+    const totalRefund = posRefund + qrRefund + cashRefund;
+    document.getElementById("totalRefund").textContent = totalRefund.toFixed(2);
+
+    const posEarning = getVal("posEarning");
+    const qrEarning = getVal("qrEarning");
+    const cashEarning = getVal("cashEarning");
+    const totalEarning = posEarning + qrEarning + cashEarning;
+    document.getElementById("totalEarning").textContent = totalEarning.toFixed(2);
+
+    const cashlessTotal = posEarning + qrEarning;
+    document.getElementById("cashlessTotal").value = cashlessTotal.toFixed(2);
+
+    const cashlessTickets = getVal("cashlessTickets");
+    const bookingTickets = getVal("bookingTickets");
+    const ticketPercent = bookingTickets ? (cashlessTickets / bookingTickets) * 100 : 0;
+    document.getElementById("ticketPercent").value = ticketPercent.toFixed(2);
+
+    const earningPercent = totalEarning ? (cashlessTotal / totalEarning) * 100 : 0;
+    document.getElementById("earningPercent").value = earningPercent.toFixed(2);
+  }
+
+  const fieldsToWatch = [
+    "posRefund", "qrRefund", "cashRefund",
+    "posEarning", "qrEarning", "cashEarning",
+    "cashlessTickets", "bookingTickets"
+  ];
+
+  fieldsToWatch.forEach(id => {
+    document.getElementById(id).addEventListener("input", updateAllCalculations);
+  });
+
+  document.getElementById("reportDate").textContent = `Date: ${new Date().toLocaleDateString()}`;
+
+  document.getElementById("downloadBtn").addEventListener("click", () => {
+    const button = document.getElementById("downloadBtn");
+    button.style.display = "none";
+    setTimeout(() => {
+      html2canvas(document.getElementById("form-container")).then(canvas => {
+        canvas.toBlob(blob => {
+          const link = document.createElement("a");
+          link.download = `Digital_Report_${new Date().toLocaleDateString().replace(/\//g, "-")}.png`;
+          link.href = URL.createObjectURL(blob);
+          link.click();
+          URL.revokeObjectURL(link.href);
+          button.style.display = "block";
+        });
+      });
+    }, 100);
+  });
+</script>
+</body>
+</html>
