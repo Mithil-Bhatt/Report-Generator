@@ -205,15 +205,21 @@
   recalcTotals();
 
   document.getElementById("downloadBtn").addEventListener("click", () => {
-    html2canvas(document.getElementById("form-container")).then(canvas => {
-      canvas.toBlob(blob => {
-        const link = document.createElement("a");
-        link.download = `Report_${new Date().toLocaleDateString().replace(/\//g, "-")}.png`;
-        link.href = URL.createObjectURL(blob);
-        link.click();
-        URL.revokeObjectURL(link.href);
+    const button = document.getElementById("downloadBtn");
+    button.style.display = "none"; // Hide button
+
+    setTimeout(() => {
+      html2canvas(document.getElementById("form-container")).then(canvas => {
+        canvas.toBlob(blob => {
+          const link = document.createElement("a");
+          link.download = `Report_${new Date().toLocaleDateString().replace(/\//g, "-")}.png`;
+          link.href = URL.createObjectURL(blob);
+          link.click();
+          URL.revokeObjectURL(link.href);
+          button.style.display = "block"; // Show button again
+        });
       });
-    });
+    }, 100); // Slight delay to allow DOM update
   });
 </script>
 
