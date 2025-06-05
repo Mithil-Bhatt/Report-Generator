@@ -11,6 +11,7 @@
     background: #f0f2f5;
   }
   #form-container {
+    position: relative;
     background: white;
     padding: 24px;
     border-radius: 10px;
@@ -98,6 +99,9 @@
 <body>
 
 <div id="form-container">
+ <a href="Digital_Transaction.html"  style="position: absolute; top: 24px; right: 24px; text-decoration: none; color: #007bff; font-weight: bold;">
+    Digital Transaction Report
+  </a>
   <div style="text-align:center;">
     <h1>Daily Transaction Report</h1>
     <p id="reportDate"></p>
@@ -105,48 +109,48 @@
 
   <div class="section">
     <h2>Number of Windows Work</h2>
-    <div class="form-row"><label for="shift1">Shift 1</label><input type="number" id="shift1" value="0" min="0" /></div>
-    <div class="form-row"><label for="shift2">Shift 2</label><input type="number" id="shift2" value="0" min="0" /></div>
+    <div class="form-row"><label for="shift1">Shift 1</label><input type="number" id="shift1" min="0" /></div>
+    <div class="form-row"><label for="shift2">Shift 2</label><input type="number" id="shift2"  min="0" /></div>
     <div class="total-row"><div>Total</div><div id="totalWindowsWork">0</div></div>
   </div>
 
   <div class="section">
     <h2>Refund Form</h2>
-    <div class="form-row"><label for="refundForms">Forms</label><input type="number" id="refundForms" value="0" min="0" /></div>
-    <div class="form-row"><label for="refundTickets">Tickets</label><input type="number" id="refundTickets" value="0" min="0" /></div>
-    <div class="form-row"><label for="refundPassengers">Passengers</label><input type="number" id="refundPassengers" value="0" min="0" /></div>
-    <div class="form-row"><label for="posRefund">POS Refund</label><input type="number" id="posRefund" value="0" min="0" /></div>
-    <div class="form-row"><label for="qrUpiRefund">QR+UPI Refund</label><input type="number" id="qrUpiRefund" value="0" min="0" /></div>
-    <div class="form-row"><label for="cashRefund">Cash Refund</label><input type="number" id="cashRefund" value="0" min="0" /></div>
+    <div class="form-row"><label for="refundForms">Forms</label><input type="number" id="refundForms"  min="0" /></div>
+    <div class="form-row"><label for="refundTickets">Tickets</label><input type="number" id="refundTickets" min="0" /></div>
+    <div class="form-row"><label for="refundPassengers">Passengers</label><input type="number" id="refundPassengers"  min="0" /></div>
+    <div class="form-row"><label for="posRefund">POS Refund</label><input type="number" id="posRefund"  min="0" /></div>
+    <div class="form-row"><label for="qrUpiRefund">QR+UPI Refund</label><input type="number" id="qrUpiRefund"  min="0" /></div>
+    <div class="form-row"><label for="cashRefund">Cash Refund</label><input type="number" id="cashRefund"  min="0" /></div>
     <div class="total-row"><div>Total Refund</div><div id="totalRefund">0</div></div>
   </div>
 
   <div class="section">
     <h2>Booking Form</h2>
-    <div class="form-row"><label for="bookingForms">Forms</label><input type="number" id="bookingForms" value="0" min="0" /></div>
-    <div class="form-row"><label for="bookingTickets">Tickets</label><input type="number" id="bookingTickets" value="0" min="0" /></div>
+    <div class="form-row"><label for="bookingForms">Forms</label><input type="number" id="bookingForms" min="0" /></div>
+    <div class="form-row"><label for="bookingTickets">Tickets</label><input type="number" id="bookingTickets"  min="0" /></div>
     <div class="form-row"><label for="bookingPassengers">Passengers</label><input type="number" id="bookingPassengers" value="0" min="0" /></div>
-    <div class="form-row"><label for="posEarning">POS Earning</label><input type="number" id="posEarning" value="0" min="0" /></div>
-    <div class="form-row"><label for="qrUpiEarning">QR+UPI Earning</label><input type="number" id="qrUpiEarning" value="0" min="0" /></div>
-    <div class="form-row"><label for="cashEarning">Cash Earning</label><input type="number" id="cashEarning" value="0" min="0" /></div>
+    <div class="form-row"><label for="posEarning">POS Earning</label><input type="number" id="posEarning"  min="0" /></div>
+    <div class="form-row"><label for="qrUpiEarning">QR+UPI Earning</label><input type="number" id="qrUpiEarning"  min="0" /></div>
+    <div class="form-row"><label for="cashEarning">Cash Earning</label><input type="number" id="cashEarning"  min="0" /></div>
     <div class="total-row"><div>Total Earning</div><div id="totalBookingEarning">0</div></div>
   </div>
 
   <div class="section">
     <h2>QR+UPI Earning</h2>
-    <div class="form-row"><label for="qrForms">Forms</label><input type="number" id="qrForms" value="0" min="0" /></div>
-    <div class="form-row"><label for="qrTickets">Tickets</label><input type="number" id="qrTickets" value="0" min="0" /></div>
-    <div class="form-row"><label for="qrPassengers">Passengers</label><input type="number" id="qrPassengers" value="0" min="0" /></div>
-    <div class="form-row"><label for="qrTotalAmount">Total Amount</label><input type="number" id="qrTotalAmount" value="0" min="0" /></div>
+    <div class="form-row"><label for="qrForms">Forms</label><input type="number" id="qrForms"  min="0" /></div>
+    <div class="form-row"><label for="qrTickets">Tickets</label><input type="number" id="qrTickets"  min="0" /></div>
+    <div class="form-row"><label for="qrPassengers">Passengers</label><input type="number" id="qrPassengers"  min="0" /></div>
+    <div class="form-row"><label for="qrTotalAmount">Total Amount</label><input type="number" id="qrTotalAmount"  min="0" /></div>
     <div class="total-row"><div>Total Amount</div><div id="totalQREarning">0</div></div>
   </div>
 
   <div class="section">
     <h2>POS Earning</h2>
-    <div class="form-row"><label for="posForms">Forms</label><input type="number" id="posForms" value="0" min="0" /></div>
-    <div class="form-row"><label for="posTickets">Tickets</label><input type="number" id="posTickets" value="0" min="0" /></div>
-    <div class="form-row"><label for="posPassengers">Passengers</label><input type="number" id="posPassengers" value="0" min="0" /></div>
-    <div class="form-row"><label for="posTotalAmount">Total Amount</label><input type="number" id="posTotalAmount" value="0" min="0" /></div>
+    <div class="form-row"><label for="posForms">Forms</label><input type="number" id="posForms"  min="0" /></div>
+    <div class="form-row"><label for="posTickets">Tickets</label><input type="number" id="posTickets"  min="0" /></div>
+    <div class="form-row"><label for="posPassengers">Passengers</label><input type="number" id="posPassengers"  min="0" /></div>
+    <div class="form-row"><label for="posTotalAmount">Total Amount</label><input type="number" id="posTotalAmount"  min="0" /></div>
     <div class="total-row"><div>Total Amount</div><div id="totalPOSEarning">0</div></div>
   </div>
 
