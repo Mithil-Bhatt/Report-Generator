@@ -1,11 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Auto Total Report</title>
-<style>
-  body {
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Transaction Forms</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f0f2f5;
+    }
+    .tabs {
+      display: flex;
+      justify-content: center;
+      background: #007bff;
+    }
+    .tab {
+      padding: 14px 20px;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+      border-bottom: 4px solid transparent;
+    }
+    .tab.active {
+      background: #0056b3;
+      border-bottom: 4px solid white;
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    #form-container {
+      background: white;
+      padding: 24px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+      max-width: 800px;
+      margin: 20px auto;
+      position: relative;
+    }
+	
+	body {
     font-family: Arial, sans-serif;
     margin: 16px;
     background: #f0f2f5;
@@ -94,14 +131,25 @@
   .summary p {
     margin: 4px 0;
   }
-</style>
+    /* Reuse your CSS here... */
+  </style>
 </head>
 <body>
 
-<div id="form-container">
- <a href="Digital_Transaction.html"  style="position: absolute; top: 24px; right: 24px; text-decoration: none; color: #007bff; font-weight: bold;">
-    Digital Transaction Report
-  </a>
+<!-- Tabs -->
+<div class="tabs">
+  <div class="tab active" onclick="showTab('form1')">Daily Transaction Report</div>
+  <div class="tab" onclick="showTab('form2')">Digital Transaction PRS-ADI</div>
+</div>
+
+<!-- Tab 1 -->
+<div id="form1" class="tab-content active">
+  
+  
+   
+   
+   <div id="form-container">
+ 
   <div style="text-align:center;">
     <h1>Daily Transaction Report</h1>
     <p id="reportDate"></p>
@@ -163,13 +211,101 @@
 
   <button id="downloadBtn">Download Report as Image</button>
 </div>
+   
+   
+    <p>Replace with Form 1 content</p>
+ 
+</div>
+
+<!-- Tab 2 -->
+<div id="form2" class="tab-content">
+
+   
+   
+   <div id="form-container">
+
+  <h1>Digital Transaction PRS-ADI</h1>
+  <p id="reportDate"></p>
+
+  <div class="section">
+    <h2>Station Info</h2>
+    <div class="form-row"><label for="stationCode">Station Code</label><input type="text" id="f2stationCode" /></div>
+    <div class="form-row"><label for="stationName">Station Name</label><input type="text" id="f2stationName" /></div>
+  </div>
+
+  <div class="section">
+    <h2>Refund Form</h2>
+    <div class="form-row"><label for="refundForms">Forms</label><input type="number" id="f2refundForms" /></div>
+    <div class="form-row"><label for="refundTickets">Tickets</label><input type="number" id="f2refundTickets" /></div>
+    <div class="form-row"><label for="refundPassengers">Passengers</label><input type="number" id="f2refundPassengers" /></div>
+    <div class="form-row"><label for="posRefund">POS Refund = A</label><input type="number" id="f2posRefund" /></div>
+    <div class="form-row"><label for="qrRefund">QR Refund = B</label><input type="number" id="f2qrRefund" /></div>
+    <div class="form-row"><label for="cashRefund">Cash Refund = C</label><input type="number" id="f2cashRefund" /></div>
+    <div class="total-row"><div>Total Refund = A + B + C</div><div id="f2totalRefund">0</div></div>
+  </div>
+
+  <div class="section">
+    <h2>Booking Form</h2>
+    <div class="form-row"><label for="bookingForms">Forms</label><input type="number" id="f2bookingForms" /></div>
+    <div class="form-row"><label for="bookingTickets">Tickets</label><input type="number" id="f2bookingTickets" /></div>
+    <div class="form-row"><label for="bookingPassengers">Passengers</label><input type="number" id="f2bookingPassengers" /></div>
+    <div class="form-row"><label for="posEarning">POS Earning = A</label><input type="number" id="f2posEarning" /></div>
+    <div class="form-row"><label for="qrEarning">QR Earning = B</label><input type="number" id="f2qrEarning" /></div>
+    <div class="form-row"><label for="cashEarning">Cash Earning = C</label><input type="number" id="f2cashEarning" /></div>
+    <div class="total-row"><div>Total Earning = A + B + C</div><div id="f2totalEarning">0</div></div>
+  </div>
+
+  <div class="section">
+    <h2>Cashless Earning</h2>
+    <div class="form-row"><label for="cashlessForms">Forms</label><input type="number" id="f2cashlessForms" /></div>
+    <div class="form-row"><label for="cashlessTickets">Tickets</label><input type="number" id="f2cashlessTickets" /></div>
+    <div class="form-row"><label for="cashlessPassengers">Passengers</label><input type="number" id="f2cashlessPassengers" /></div>
+    <div class="form-row"><label for="cashlessTotal">Total Amount (POS + QR)</label><input type="number" id="f2cashlessTotal" /></div>
+  </div>
+
+  <div class="section">
+    <h2>Percentages & Summary</h2>
+    <div class="form-row"><label for="ticketPercent">Tickets %</label><input type="number" id="f2ticketPercent" /></div>
+    <div class="form-row"><label for="earningPercent">Earning %</label><input type="number" id="f2earningPercent" /></div>
+    <div class="form-row"><label for="grossEarning">Gross Earning</label><input type="number" id="f2grossEarning" /></div>
+    <div class="form-row"><label for="posTickets">POS Tickets</label><input type="number" id="f2posTickets" /></div>
+    <div class="form-row"><label for="qrTickets">QR Tickets</label><input type="number" id="f2qrTickets" /></div>
+  </div>
+
+  <button id="downloadBtn">Download Report as Image</button>
+</div>
+   
+   
+    <p>Replace with Form 2 content</p>
+
+</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script>
-  document.getElementById("reportDate").textContent =
-    `Date: ${new Date().toLocaleDateString()}`;
+  function showTab(tabId) {
+    document.querySelectorAll(".tab-content").forEach(tab => {
+      tab.classList.remove("active");
+    });
+    document.querySelectorAll(".tab").forEach(btn => {
+      btn.classList.remove("active");
+    });
+    document.getElementById(tabId).classList.add("active");
+    event.target.classList.add("active");
+  }
+  
+  
+  
+  
 
-  const inputs = [
+  document.querySelectorAll("#reportDate").forEach(el => {
+    el.textContent = `Date: ${new Date().toLocaleDateString()}`;
+  });
+
+
+  // Form 1 Script
+
+  const form1Inputs = [
     "shift1", "shift2",
     "refundForms", "refundTickets", "refundPassengers", "posRefund", "qrUpiRefund", "cashRefund",
     "bookingForms", "bookingTickets", "bookingPassengers", "posEarning", "qrUpiEarning", "cashEarning",
@@ -178,11 +314,13 @@
   ];
 
   function getIntValue(id) {
-    const val = parseInt(document.getElementById(id).value);
+    const el = document.getElementById(id);
+    if (!el) return 0;
+    const val = parseInt(el.value);
     return isNaN(val) ? 0 : val;
   }
 
-  function recalcTotals() {
+  function recalcForm1() {
     const totalWindows = getIntValue("shift1") + getIntValue("shift2");
     const totalRefund = getIntValue("refundForms") + getIntValue("refundTickets") +
                         getIntValue("refundPassengers") + getIntValue("posRefund") +
@@ -191,41 +329,113 @@
     const totalQR = getIntValue("qrForms") + getIntValue("qrTickets") + getIntValue("qrPassengers") + getIntValue("qrTotalAmount");
     const totalPOS = getIntValue("posForms") + getIntValue("posTickets") + getIntValue("posPassengers") + getIntValue("posTotalAmount");
 
-    document.getElementById("totalWindowsWork").textContent = totalWindows;
-    document.getElementById("totalRefund").textContent = totalRefund;
-    document.getElementById("totalBookingEarning").textContent = totalBooking;
-    document.getElementById("totalQREarning").textContent = totalQR;
-    document.getElementById("totalPOSEarning").textContent = totalPOS;
+    const updateText = (id, value) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value;
+    };
 
-    document.getElementById("summaryTotalWindows").textContent = totalWindows;
-    document.getElementById("summaryTotalRefund").textContent = totalRefund;
-    document.getElementById("summaryTotalBooking").textContent = totalBooking;
+    updateText("totalWindowsWork", totalWindows);
+    updateText("totalRefund", totalRefund);
+    updateText("totalBookingEarning", totalBooking);
+    updateText("totalQREarning", totalQR);
+    updateText("totalPOSEarning", totalPOS);
+
+    updateText("summaryTotalWindows", totalWindows);
+    updateText("summaryTotalRefund", totalRefund);
+    updateText("summaryTotalBooking", totalBooking);
   }
 
-  inputs.forEach(id => {
-    document.getElementById(id).addEventListener("input", recalcTotals);
+  form1Inputs.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener("input", recalcForm1);
   });
 
-  recalcTotals();
+  recalcForm1(); // Initialize
 
-  document.getElementById("downloadBtn").addEventListener("click", () => {
-    const button = document.getElementById("downloadBtn");
-    button.style.display = "none"; // Hide button
 
-    setTimeout(() => {
-      html2canvas(document.getElementById("form-container")).then(canvas => {
-        canvas.toBlob(blob => {
-          const link = document.createElement("a");
-          link.download = `Report_${new Date().toLocaleDateString().replace(/\//g, "-")}.png`;
-          link.href = URL.createObjectURL(blob);
-          link.click();
-          URL.revokeObjectURL(link.href);
-          button.style.display = "block"; // Show button again
+  // Form 2 Script
+
+  const form2Inputs = [
+    "f2posRefund", "f2qrRefund", "f2cashRefund",
+    "f2posEarning", "f2qrEarning", "f2cashEarning",
+    "f2cashlessTickets", "f2bookingTickets"
+  ];
+
+  function getFloatValue(id) {
+    const el = document.getElementById(id);
+    if (!el) return 0;
+    return parseFloat(el.value) || 0;
+  }
+
+  function recalcForm2() {
+    const posRefund = getFloatValue("f2posRefund");
+    const qrRefund = getFloatValue("f2qrRefund");
+    const cashRefund = getFloatValue("f2cashRefund");
+    const totalRefund = posRefund + qrRefund + cashRefund;
+    const elRefund = document.getElementById("f2totalRefund");
+    if (elRefund) elRefund.textContent = totalRefund.toFixed(2);
+
+    const posEarning = getFloatValue("f2posEarning");
+    const qrEarning = getFloatValue("f2qrEarning");
+    const cashEarning = getFloatValue("f2cashEarning");
+    const totalEarning = posEarning + qrEarning + cashEarning;
+    const elEarning = document.getElementById("f2totalEarning");
+    if (elEarning) elEarning.textContent = totalEarning.toFixed(2);
+
+    const cashlessTotal = posEarning + qrEarning;
+    const elCashless = document.getElementById("f2cashlessTotal");
+    if (elCashless) elCashless.value = cashlessTotal.toFixed(2);
+
+    const cashlessTickets = getFloatValue("f2cashlessTickets");
+    const bookingTickets = getFloatValue("f2bookingTickets");
+    const ticketPercent = bookingTickets ? (cashlessTickets / bookingTickets) * 100 : 0;
+    const elPercentTickets = document.getElementById("f2ticketPercent");
+    if (elPercentTickets) elPercentTickets.value = ticketPercent.toFixed(2);
+
+    const earningPercent = totalEarning ? (cashlessTotal / totalEarning) * 100 : 0;
+    const elPercentEarnings = document.getElementById("f2earningPercent");
+    if (elPercentEarnings) elPercentEarnings.value = earningPercent.toFixed(2);
+  }
+
+  form2Inputs.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener("input", recalcForm2);
+  });
+
+  recalcForm2(); 
+
+  
+  document.querySelectorAll("#downloadBtn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      btn.style.display = "none";
+
+      // Find the nearest visible form container
+      const parentContainer = btn.closest(".tab-content").querySelector("#form-container");
+      if (!parentContainer) {
+        alert("Form container not found.");
+        return;
+      }
+
+      setTimeout(() => {
+        html2canvas(parentContainer).then(canvas => {
+          canvas.toBlob(blob => {
+            const link = document.createElement("a");
+            const fileName = parentContainer.querySelector("h1")?.textContent?.replace(/\s+/g, "_") || "Report";
+            link.download = `${fileName}_${new Date().toLocaleDateString().replace(/\//g, "-")}.png`;
+            link.href = URL.createObjectURL(blob);
+            link.click();
+            URL.revokeObjectURL(link.href);
+            btn.style.display = "block";
+          });
         });
-      });
-    }, 100); // Slight delay to allow DOM update
+      }, 100);
+    });
   });
+  
+  
+  
+  
+  
 </script>
-
 </body>
 </html>
