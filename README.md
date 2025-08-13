@@ -24,5 +24,4 @@ This tool allows users to enter ticket sales data throughout the day and instant
 
 ---
 
-## 📂 Project Structure
 
